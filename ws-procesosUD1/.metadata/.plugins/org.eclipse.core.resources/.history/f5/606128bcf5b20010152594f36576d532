@@ -1,0 +1,25 @@
+package AlCuadraddo2;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class PH1 {
+	
+	public static void main(String[] args) throws Exception {
+		
+		int numeroRecibido = 0;
+		// Leo la informacion de PP
+		// Un numero
+		try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
+			
+			// Cojo el numero
+			numeroRecibido = Integer.parseInt(br.readLine()); // Parseo
+		}
+		
+		// Hago el cuadrado del numero
+		numeroRecibido *= numeroRecibido;
+		
+		// Envio la info al PP
+		System.out.println(  numeroRecibido);
+	}
+}

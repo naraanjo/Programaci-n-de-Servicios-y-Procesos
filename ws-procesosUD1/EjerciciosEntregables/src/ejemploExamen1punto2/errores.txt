@@ -1,0 +1,3 @@
+Exception in thread "main" java.lang.Error: Unresolved compilation problem: 
+
+	at ejemploExamen1punto2.LeerAlumno.main(LeerAlumno.java:9)

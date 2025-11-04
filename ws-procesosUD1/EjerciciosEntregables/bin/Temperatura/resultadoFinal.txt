@@ -1,0 +1,2 @@
+Resultado de la temperatura: true
+Temperatura elevada

@@ -1,0 +1,4 @@
+Numero de vocales: 21
+Numero de consonantes: 33
+Numero de veces de la letra buscada: -A- 21
+Palabras con mas de 5 caracteres: 1

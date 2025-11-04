@@ -1,0 +1,105 @@
+package buscarPalabra;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+
+
+public class Lanzador {
+	
+	//PP lee FICHEROS, va mandando linea a linea la info a PH1
+	//Este comprueba si existe o no en esas linea la palabra buscada
+	
+	
+	public void  Lanzar() {
+	
+		
+		String palabraBuscar = "alvaro";
+		try {
+			
+			String listaFicheros[] = {"buscarPalabra1.txt", "buscarPalabra2.txt", "buscarPalabra3.txt"};
+			
+			// Recorro los ficheros
+			// Por cada fichero se ejecutan los procesos de nuevo
+			for(String fichero: listaFicheros) {
+				
+				// Creo el archivo
+				File archivo = new File(fichero);
+				
+				// ----- FASE-1 CREACION DEL PH-1 ----
+				ProcessBuilder pb1= new ProcessBuilder("java", "-cp", "bin", "buscarPalabra.PRH1");
+				pb1.redirectError(new File("ErrorPH1BuscarPalabra.txt"));
+				Process proceso1 = pb1.start();
+				
+				ProcessBuilder pb2= new ProcessBuilder("java", "-cp", "bin", "buscarPalabra.PRH2");
+				pb2.redirectError(new File("ErrorPH2BuscarPalabra.txt"));
+				Process proceso2 = pb2.start();
+				
+				try(BufferedReader brFichero = new BufferedReader(new FileReader(archivo));
+					BufferedWriter bw1 = new BufferedWriter(new OutputStreamWriter(proceso1.getOutputStream()));
+					BufferedReader br1 = new BufferedReader(new InputStreamReader(proceso1.getInputStream()));
+					BufferedWriter bw2 = new BufferedWriter(new OutputStreamWriter(proceso2.getOutputStream()));
+					BufferedReader br2 = new BufferedReader(new InputStreamReader(proceso2.getInputStream()))){
+					
+					// ---- FASE-2 LECTURA DEL FICHERO ----
+
+					String linea = "";
+					// Envio la palabra a buscar
+					bw1.write(palabraBuscar);
+					bw1.newLine();
+					bw1.flush();
+					
+					while((linea = brFichero.readLine()) != null) {
+						// ------ FASE-3 ENVIO LAS LINEAS A PH-1  ------
+							bw1.write(linea);
+							bw1.newLine();
+							bw1.flush();
+						}
+						bw1.close();
+						
+						
+						// ----- FASE-4 LECTURA DE LA INFO DEL PH-1 ------
+						ArrayList<String> infoPh1 = new ArrayList<String>();
+					String linea1 = "";
+					while((linea1 = br1.readLine()) != null) {
+					
+						infoPh1.add(linea1);
+						System.out.println("[PH-1]: " + linea1);
+						
+					}
+					
+					// ---- FASE-5 ENVIO LA INFO A PH-2 -----
+					for(String infoP1: infoPh1) {
+						bw2.write(infoP1);
+						bw2.newLine();
+						bw2.flush();
+					}
+					
+					// ---- FASE-6 LEO LA INFO DE PH-2
+					String linea2 = "";
+					while((linea2 = br2.readLine()) != null) {
+						// Imprimo la info de PH-2
+						System.out.println("[PH-2]: " + linea2);
+					
+					}
+					
+					}
+
+				// Archivo leido por completo
+			}
+			
+		}catch(Exception e ) {
+			System.out.println("Error");
+		}
+	}
+	
+	public static void main(String[] args) throws Exception {
+		Lanzador l = new Lanzador();
+		l.Lanzar();
+	}
+
+}

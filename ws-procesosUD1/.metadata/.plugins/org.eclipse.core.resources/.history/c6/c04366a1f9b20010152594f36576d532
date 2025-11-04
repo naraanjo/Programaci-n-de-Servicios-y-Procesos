@@ -1,0 +1,31 @@
+package buscarPalab;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
+
+public class P2 {
+	public static void main(String[] args) throws Exception {
+		
+		File archivo = new File("res.txt");
+		// Leo la info de PP
+		try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))){
+			
+			String linea = "";
+			while((linea = br.readLine()) != null) {
+				
+				// Envio los resultados a un fichero
+				bw.write(linea);
+				bw.newLine();
+				bw.flush();
+			}
+		}
+		
+		// Envio al Pp
+		System.out.println("Resultados guardados con exito");
+	}
+
+}

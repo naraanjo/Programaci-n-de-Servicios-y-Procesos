@@ -1,0 +1,93 @@
+package factorial;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+
+import primo.Lanzador;
+
+public class Lanzador {
+
+	/*
+	 * PP tiene un array de numeros, va pasando uno a uno a PH1- este calcula el
+	 * factorial, envia el numero y el resultado a PP - y este a PH2- que guarda la
+	 * info en un fichero
+	 *
+	 */
+
+	public void Lanzar() {
+
+		try {
+
+			int listaNumeros[] = { 2, 5, 8, 3 };
+
+			// Recorro la lista de los numeros
+			for (Integer numero : listaNumeros) {
+
+				// Creacion de procesos por cada numero
+				ProcessBuilder pb1 = new ProcessBuilder("java", "-cp", "bin", "factorial.P1");
+				Process proceso1 = pb1.start();
+
+				ProcessBuilder pb2 = new ProcessBuilder("java", "-cp", "bin", "factorial.P2");
+				Process proceso2 = pb2.start();
+
+				// Envio el numero al PH-1
+				try (BufferedWriter bw1 = new BufferedWriter(new OutputStreamWriter(proceso1.getOutputStream()))) {
+
+					// Envio info a PH1
+					bw1.write(numero.toString()); // IMPORTANTE PARSEAR
+					bw1.newLine();
+					bw1.flush();
+				}
+
+				// Leo la info de PH-1 a PP
+				// Guardo la info temporalmente
+				ArrayList<String> listaInfo = new ArrayList<String>();
+				try (BufferedReader br1 = new BufferedReader(new InputStreamReader(proceso1.getInputStream()))) {
+					String linea1 = "";
+
+					while ((linea1 = br1.readLine()) != null) {
+						System.out.println("[PH-1]: " + linea1);
+						listaInfo.add(linea1); // Guardo la salida de PH-1
+					}
+				}
+
+				// Envio la info a PH-2
+				try (BufferedWriter bw2 = new BufferedWriter(new OutputStreamWriter(proceso2.getOutputStream()))) {
+
+					// Recorro la info almacenada
+					for (String info : listaInfo) {
+						bw2.write(info);
+						bw2.newLine();
+						bw2.flush();
+						System.out.println(info); // Envio la info a PH2
+					}
+				}
+
+				// Lectura de la info de PH-2
+				try (BufferedReader br2 = new BufferedReader(new InputStreamReader(proceso2.getInputStream()))) {
+
+					String linea2 = "";
+					while ((linea2 = br2.readLine()) != null) {
+						System.out.println("[PH2]: " + linea2);
+					}
+				}
+				
+				proceso1.waitFor();
+				proceso2.waitFor();
+			}
+
+		} catch (Exception e) {
+			System.out.println("Eror - Lanzador");
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) throws Exception {
+		Lanzador l = new Lanzador();
+		l.Lanzar();
+	}
+
+}

@@ -1,0 +1,53 @@
+package ejercicio2;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+
+public class Lanzador {
+	public void Lanzar() {
+
+		File archivo = new File("simulacro.txt");
+
+		try {
+
+			// Creacion de los procesos
+			ProcessBuilder pb1 = new ProcessBuilder("java", "-cp", "bin", "ejercicio2.Proceso1");
+			Process proceso1 = pb1.start();
+			// Lectura del archivo
+			try (BufferedReader br = new BufferedReader(new FileReader(archivo));
+					BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(proceso1.getOutputStream()))) {
+
+				String linea = "";
+				while ((linea = br.readLine()) != null) {
+					
+					// Envio la linea al hijo
+					bw.write(linea);
+					bw.newLine();
+					bw.flush();
+				}
+			}
+			
+			
+			// Leo la salida del hijo
+			try(BufferedReader br1 = new BufferedReader(new InputStreamReader(proceso1.getInputStream()))){
+				String linea = "";
+				while((linea = br1.readLine()) != null) {
+					// Saco por terminal
+					System.out.println("[PH1]: " + linea);
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("Error");
+		}
+
+	}
+	public static void main(String[] args) throws Exception {
+		Lanzador l = new Lanzador();
+		l.Lanzar();
+	}
+}

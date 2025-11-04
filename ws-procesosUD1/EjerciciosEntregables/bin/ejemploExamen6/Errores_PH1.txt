@@ -1,0 +1,2 @@
+Exception in thread "main" java.lang.Exception: Archivo inexistente
+	at ejemploExamen6.PH1.main(PH1.java:21)

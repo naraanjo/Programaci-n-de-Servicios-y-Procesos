@@ -1,0 +1,16 @@
+ El volumen de la unidad C no tiene etiqueta.
+ El n£mero de serie del volumen es: 3E1B-4E2B
+
+ Directorio de C:\Users\Alvaro\workSpaces\ws-procesos\Ejercicios
+
+28/09/2025  11:47    <DIR>          .
+28/09/2025  11:47    <DIR>          ..
+28/09/2025  11:27             1.609 .classpath
+28/09/2025  11:27               562 .project
+28/09/2025  11:27    <DIR>          .settings
+28/09/2025  11:47                 0 info.txt
+28/09/2025  11:27               778 pom.xml
+28/09/2025  11:27    <DIR>          src
+28/09/2025  11:27    <DIR>          target
+               4 archivos          2.949 bytes
+               5 dirs  41.074.679.808 bytes libres

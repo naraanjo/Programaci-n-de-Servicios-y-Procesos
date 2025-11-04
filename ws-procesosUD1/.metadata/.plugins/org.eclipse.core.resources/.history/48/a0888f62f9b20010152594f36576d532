@@ -1,0 +1,88 @@
+package buscarPalab;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+
+public class Lanzador {
+
+	
+	//PP lee FICHEROS, va mandando linea a linea la info a PH1
+	//Este comprueba si existe o no en esas linea la palabra buscada
+	
+	public void Lanzar() {
+		
+		// Palabra a buscar en los ficheros
+		String palabraBuscar = "alvaro";
+		
+		// Lista de los ficheros que hay que leer
+		String listaFicheros[] = {"f1.txt", "f2.txt", "f3.txt"};
+		
+		
+		try {
+		
+			// Recorro cada fichero ejecutando el proceso
+			for(String fichero: listaFicheros) {
+				// Compruebo que exista el fichero
+				File archivo = new File(fichero);
+				if(!archivo.exists()) throw new Exception("No existe el archivo - Fin"); 
+				
+				// Creacion de los procesos
+				ProcessBuilder pb1 = new ProcessBuilder("java", "-cp", "bin", "buscarPalab.P1");
+				pb1.redirectError(new File("err1Palabra.txt"));
+				Process proceso1 = pb1.start();
+				
+				ProcessBuilder pb2 = new ProcessBuilder("java", "-cp", "bin", "buscarPalab.P2");
+				pb2.redirectError(new File("err2Palabra.txt"));
+				Process proceso2 = pb2.start();
+				
+				// Lectura del ficher
+				try(BufferedReader br = new BufferedReader(new FileReader(archivo));
+					BufferedWriter bw1 = new BufferedWriter(new OutputStreamWriter(proceso1.getOutputStream()))){
+					
+					// Envio la palabra a buscar
+					bw1.write(palabraBuscar);
+					bw1.newLine();
+					
+					// Leo linea a linea
+					String linea = "";
+					while((linea = br.readLine()) != null) {
+						
+						// Envio la linea a el PH1
+						bw1.write(linea);
+						bw1.newLine();
+						bw1.flush();
+					}
+				}
+				
+				// Recibo la informacion del PH1
+				try(BufferedReader br1 = new BufferedReader(new InputStreamReader(proceso1.getInputStream()));
+					BufferedWriter bw2 = new BufferedWriter(new OutputStreamWriter(proceso2.getOutputStream()))){
+					String linea = "";
+					
+					// Leo la info de PH1
+					while((linea = br1.readLine()) != null) {
+						// Saco por consola y envio a PH2
+						System.out.println("[PH1]: " + linea );
+						
+						// Envio a PH2
+						bw2.write(linea);
+						bw2.newLine();
+						bw2.flush();
+					}
+				}
+			}
+		}catch(Exception e) {
+			System.out.println("Error 000");
+		}
+	}
+	
+	public static void main(String[] args) throws Exception {
+		Lanzador l = new Lanzador();
+		l.Lanzar();
+	}
+}

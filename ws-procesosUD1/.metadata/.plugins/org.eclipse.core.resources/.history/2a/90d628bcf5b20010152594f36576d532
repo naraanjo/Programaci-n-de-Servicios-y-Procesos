@@ -1,0 +1,24 @@
+package AlCuadraddo2;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class pH2 {
+
+	public static void main(String[] args) throws Exception {
+		int numeroRecibido = 0;
+		
+		// Recibe un numero y le suma 10
+		try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
+			
+			numeroRecibido = Integer.parseInt(br.readLine()); // Parseo
+			
+		}
+		
+		// Sumo 10
+		numeroRecibido += 10;
+		
+		// Envio la info a PP
+		System.out.println("[PH2]: " + String.valueOf(numeroRecibido));
+	}
+}

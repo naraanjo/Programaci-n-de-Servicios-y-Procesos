@@ -1,0 +1,47 @@
+package primo;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class PRH1 {
+	public static void main(String[] args) throws Exception {
+
+		int contador = 0;
+		String palabraBuscar = "";
+
+		// Leo la info del PP
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+			String linea = "";
+
+			while ((linea = br.readLine()) != null) {
+
+				// Compruebo si la linea contiene la palabra
+				// Linea que no sea cero
+				if (contador != 0) {
+
+					String lineaDividida[] = linea.split("\\s+"); // Divide la linea en palabras
+					
+					// Recorro las palabras de esa linea
+					for (String palabra : lineaDividida) {
+						
+						if(palabra.equals(palabraBuscar)) {
+							// Envio a PP la coincidencia
+							System.out.println("Coincidencia en la linea: -" + linea + "-" ); 
+						}
+					}
+				}
+				
+
+				// La palabra es la primera linea que le paso
+				// Creacion del contador para poder saber cual es la palabra
+				if (contador == 0) {
+					palabraBuscar = linea;
+				} else {
+					contador++;
+				}
+
+			}
+		}
+	}
+
+}

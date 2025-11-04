@@ -1,0 +1,36 @@
+package mayorCincuenta;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
+import java.io.File;
+
+public class Proceso2 {
+
+	public static void main(String[] args) throws Exception {
+		
+		// Archivo donde iran los resultados
+		File archivo = new File("Resultados50");
+		if(!archivo.exists()) archivo.createNewFile();
+		
+		// Lectura de la info recibida de PP
+		// Envio a la vez la info a un fichero
+		try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(archivo, true))){
+
+			// Lectura PP
+			// Escribo en fichero los resultados
+			String linea = "";
+			while((linea = br.readLine()) != null) {
+				
+				// Escribo lo leido en un fichero
+				bw.write(linea);
+				bw.newLine();
+				bw.flush();
+			}
+		}
+		
+		System.out.println("[PH-2]: Resultados guardados correctamente en el fichero");
+	}
+}

@@ -1,0 +1,142 @@
+package ejercicio2;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Padre {
+
+	public void Lanzar() {
+		
+		int caso = 0;
+
+		try {
+			Scanner teclado = new Scanner(System.in);
+
+			String numeroIntroducidoStr;
+			boolean numeroInvalido = false;
+			int numeroValido = 0;
+
+			// DO-WHILE | Control de que NO acepte cadenas
+			do {
+
+				// Leo el numero en formato string y luego parseo
+				// Para evitar errores con teclado.NexInt(), debido a la acumulacion en el
+				// buffer
+				// Parsear seria mas seguro y efectivo en este caso
+				// Evito cadenas vacias
+				try {
+					numeroInvalido = false; // Control de que unicamente sean numeros Integer
+					System.out.println("Introduce un numero mayor que 100");
+					numeroIntroducidoStr = teclado.nextLine();
+
+					numeroValido = Integer.parseInt(numeroIntroducidoStr);
+					
+					// 
+					if(numeroValido < 0) {
+						caso=-1;
+					}else if(numeroValido <100 && numeroValido > 0) {
+						caso = -2;
+					}
+					
+				} catch (Exception e) {
+					numeroInvalido = true;
+					System.out.println("Introduce un numero valido");
+				}
+
+			} while (numeroInvalido );
+
+			// Numero valido introducido
+			System.out.println("Numero valido introducido correctamente");
+
+
+
+			
+
+				// Lista donde almaceno la cantidad de sumatorios
+				// Sera la cantidad de veces que se llamar al PH1
+				ArrayList<Integer> listaSumatorios = new ArrayList<Integer>();
+				int numeroLlamadas = 0;
+				int valor =0; // Resultado
+				
+				// Caso de numero entre 100 y 500
+				if (numeroValido > 100 && numeroValido <= 500) {
+
+					// Realizacion del sumatorio en dos mitades
+					// Hara dos llamadas a PH1
+					listaSumatorios.add( (int) numeroValido / 2);
+					listaSumatorios.add(numeroValido);
+
+					numeroLlamadas = 2;
+
+				} else if (numeroValido > 500) {
+					// Hara 3 llamadas al hijo, con cada parte
+					listaSumatorios.add( numeroValido / 3);
+					numeroLlamadas = 3;
+				}
+				
+				
+				// Llamo al proceso hijo las veces necesarias
+				// Segun el numero introducido
+				for(int i = 0; i< numeroLlamadas; i++) {
+					
+					// Creacion del proceso hijo
+					ProcessBuilder pb1 = new ProcessBuilder("java", "-cp", "bin", "ejercicio2.ProcesoHijo1");
+					Process proceso1 = pb1.start();
+					
+					// Envio la informacion al proceso hijo
+					try(BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(proceso1.getOutputStream()))){
+					
+						bw.write(listaSumatorios.get(i).toString()); // PARSEO
+						bw.newLine();
+						bw.flush();
+					}
+					
+					
+					// Leo la informacion del proceso hijo
+					try (BufferedReader br = new BufferedReader(new InputStreamReader(proceso1.getInputStream()))) {
+						String linea = "";
+
+						// Uso bucle para leer, se que solo hay una linea, pero si el programa
+						// se modificara con mas lineas ya estaria preparado
+						while ((linea = br.readLine()) != null) {
+							
+							// Obtengo el numero enviado desde PH1
+							// Voy sumando todas las veces que llamo al PH1
+							valor += Integer.parseInt(linea); // Parseo la linea recibida a int
+							System.out.println(1);
+							System.out.println(Integer.parseInt(linea));
+						}
+
+					}
+				}
+			
+				
+				// Resultado final
+				if(caso==-1) {
+					System.out.println("Numero introducido menor que 0 | Resultado = -1");
+				}else if(caso ==-2) {
+					System.out.println("Numero introducido menor que 100 | Resultado = -2");
+				}else {
+					System.out.println("El sumatorio de " + numeroValido + " es " + valor);
+				}
+			
+			
+			
+			
+
+			
+		} catch (Exception e) {
+			System.out.println("Error en el PP");
+		}
+
+	}
+
+	public static void main(String[] args) throws Exception {
+		Padre l = new Padre();
+		l.Lanzar();
+	}
+}

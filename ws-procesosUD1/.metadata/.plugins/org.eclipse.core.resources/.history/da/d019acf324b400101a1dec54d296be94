@@ -1,0 +1,16 @@
+package ejercicio2;
+
+public class a {
+
+
+	public static void main(String[] args) throws Exception {
+	
+		
+		int numero = 4;
+		
+		// Sumatorio
+		for(int i = 1; i<=4; i++) {
+			System.out.println(numero+i);
+		}
+	}
+}

@@ -1,0 +1,45 @@
+package ejercicio2;
+
+import java.util.Scanner;
+
+public class Padre {
+
+	public void Lanzar() {
+
+		Scanner teclado = new Scanner(System.in);
+
+		String numeroIntroducidoStr;
+		boolean numeroInvalido = false;
+		int numeroValido=0;
+
+		// DO-WHILE | Control de que NO acepte cadenas
+		do {
+			
+			// Leo el numero en formato string y luego parseo
+			// Para evitar errores con teclado.NexInt(), debido a la acumulacion en el buffer
+			// Parsear seria mas seguro y efectivo en este caso
+			try {
+				numeroInvalido = false; // Control de que unicamente sean numeros Integer
+				System.out.println("Introduce un numero");
+				numeroIntroducidoStr = teclado.nextLine();
+				
+				numeroValido = Integer.parseInt(numeroIntroducidoStr);
+			} catch (Exception e) {
+				numeroInvalido = true;
+				System.out.println("Introduce un numero valido");
+			}
+
+		} while (numeroInvalido || numeroValido < 100);
+		
+		
+		// Numero valido introducido
+		System.out.println("Numero valido introducido correctamente");
+		
+		
+	}
+
+	public static void main(String[] args) throws Exception {
+		Padre l = new Padre();
+		l.Lanzar();
+	}
+}

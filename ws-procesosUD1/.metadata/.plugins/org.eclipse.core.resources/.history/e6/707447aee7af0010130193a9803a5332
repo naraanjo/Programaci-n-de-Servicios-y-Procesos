@@ -1,0 +1,51 @@
+package primo;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
+
+public class PH2 {
+
+	static {
+		int contador = 0;
+	}
+	public static void main(String[] args) throws Exception {
+		
+		// Recibo la solucion y el numero de PP
+		String infoPP = "";
+		int numeroRecibido=0 ;
+		
+		// Leo al PP
+		try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
+			//System.out.println("Introduce si es primo o no");
+			infoPP = br.readLine();
+			
+			//System.out.println("Introduce el numero del que se trata");
+			numeroRecibido = Integer.parseInt(br.readLine());
+		}
+		
+		// Creacion de un fichero con el resultado
+		String ruta = "SiNoPrimo_" + numeroRecibido+ ".txt";
+		File archivo = new File(ruta);
+		
+		if(!archivo.exists()) {
+			archivo.createNewFile();
+			
+			// Escribo la solucion en el archivo
+			try(BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))){
+				// Escribo el numero
+				bw.write(numeroRecibido);
+				bw.newLine();
+				// Escribo la solucion | Primo o no
+				bw.write(infoPP);
+				bw.flush();
+			}
+			
+			System.out.println("Archivo creado correctamente: " + ruta);
+		}else {
+			System.out.println("El archivo no se ha podido crear " + ruta);
+		}
+	}
+}

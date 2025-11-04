@@ -1,0 +1,97 @@
+package primo;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+
+import lecturaArchivoAlumnos.Lanzador;
+
+// Llama a PH-1, ENVIA lista Numeros
+// PH-1 Dice si es primo o no - envia a PP
+// PP envia a PH-2 el resultado
+//PH2- Enviar el resultado a un ficehro
+
+public class Lanzador {
+
+	public void Lanzar() throws Exception {
+		// Lista con los numeros
+		ArrayList<Integer> listaNumeros = new ArrayList<Integer>();
+
+		// Genero 5 numeros aleatorios
+		for (int i = 0; i < 5; i++) {
+			int random = (int) (Math.random() * (20 - 2 + 1) + 2); // Entre 2 y 20
+			listaNumeros.add(random);
+		}
+
+		try {
+			// Recorro la lista de los numeros enviando los datos a PH1
+			for (Integer numero : listaNumeros) {
+
+				// ----- CREACION PH-1 -------
+				ProcessBuilder pb1 = new ProcessBuilder("java", "-cp", "bin", "primo.PH1");
+				pb1.redirectError(new File("src/primo/ErroresPH1.txt"));
+
+				Process proceso1 = pb1.start();
+
+				// ----- ENVIO INFO PP - PH1 -----
+				try (BufferedWriter bw1 = new BufferedWriter(new OutputStreamWriter(proceso1.getOutputStream()))) {
+					bw1.write(numero.toString()); // ------ IMPORTANTE PASAR STRING ------
+					bw1.newLine();
+					bw1.flush();
+				}
+
+				// Almaceno temporalmente la info de PH1
+				
+				ArrayList<String> listaInfoPH1 = new ArrayList<String>();
+				// -------- LECTURA DE LA SALIDA DE PH1 | PH1 - PP ------------
+				try (BufferedReader br1 = new BufferedReader(new InputStreamReader(proceso1.getInputStream()))) {
+					String linea1 = "";
+					while ((linea1 = br1.readLine()) != null) {
+						listaInfoPH1.add(linea1); // Guardo la info - se pasara a PH2
+					}
+				}
+			
+				// ------ CREACION PH2 -----
+				ProcessBuilder pb2 = new ProcessBuilder("java", "-cp", "bin", "primos.PH2");
+				pb2.redirectError(new File("src/primo/ErroresPH2.txt"));
+				Process proceso2 = pb2.start();
+
+				// ---- ENVIO INFO A PH-2 --------
+				try (BufferedWriter bw2 = new BufferedWriter(new OutputStreamWriter(proceso2.getOutputStream()))) {
+					
+					// Paso la solucion
+					bw2.write(listaInfoPH1.get(0));
+					bw2.newLine();
+					bw2.flush();
+					
+					// Paso el numero
+					bw2.write(listaInfoPH1.get(1));
+					bw2.newLine();
+					bw2.flush();
+				}
+
+				// ----- LECTURA DE LA SALIDA DE PH-2 ----
+				try (BufferedReader br2 = new BufferedReader(new InputStreamReader(proceso2.getInputStream()))) {
+					String linea2 = "";
+					while ((linea2 = br2.readLine()) != null) {
+						System.out.println(linea2); // Saco la info de PH2
+					}
+				}
+
+			}
+
+		} catch (Exception e) {
+			System.out.println("Error");
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) throws Exception {
+		Lanzador l = new Lanzador();
+		l.Lanzar();
+	}
+
+}

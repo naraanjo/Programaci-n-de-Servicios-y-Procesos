@@ -1,0 +1,2 @@
+Exception in thread "main" java.lang.NullPointerException: Cannot invoke "String.isEmpty()" because "nombre" is null
+	at ejemploExamen1.leerAlumnos.main(leerAlumnos.java:40)

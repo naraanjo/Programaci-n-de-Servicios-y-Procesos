@@ -1,0 +1,46 @@
+package Ejercicio2;
+
+import java.io.*;
+
+public class ProcesoPadre {
+	public static void main(String[] args) {
+		String clase = "Ejercicio2.ProcesoHijo1";
+		
+		try {
+			ProcessBuilder pb = new ProcessBuilder("java", "-cp", "bin", clase);
+			pb.redirectErrorStream(true);
+			Process proceso = pb.start();
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader(proceso.getInputStream()));
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(proceso.getOutputStream()));
+			
+			BufferedReader brFichero = new BufferedReader(new FileReader("nombreEdad.txt"));
+			
+			String numero = brFichero.readLine();
+			String nombre = "";
+			while(numero != null) {
+				bw.write(numero);
+				bw.newLine();
+				bw.flush();
+				
+				nombre = brFichero.readLine();
+				if(nombre != null) {	
+				bw.write(nombre);
+				bw.newLine();
+				bw.flush();
+				}
+				numero = brFichero.readLine();
+			}
+			
+			brFichero.close();
+			
+			String respuesta = "";
+			while((respuesta = br.readLine()) != null) {
+				System.out.println(respuesta);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

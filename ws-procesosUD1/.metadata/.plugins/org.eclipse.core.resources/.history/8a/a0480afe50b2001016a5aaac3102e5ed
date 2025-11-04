@@ -1,0 +1,32 @@
+package factorial;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class P1 {
+
+	public static void main(String[] args) throws Exception {
+	
+	
+		// Leo la info de PP
+		// Un numero
+
+		try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
+			String numero = br.readLine();
+		}
+		
+		// Parseo el numero recibido
+		int numeroRecibido = Integer.parseInt(numero);
+		
+		// Calculo del factorial
+		int resultado = 1;
+		for(int i = 2; i <= numeroRecibido; i++) {
+		    resultado *= i;
+		}
+		
+		// Envio la info a PP
+		System.out.println("Numero: " + String.valueOf(numeroRecibido));
+		System.out.println("Resultado: " + String.valueOf(resultado));
+		System.out.println("-------------------------------------------------------------------------------");
+	}
+}

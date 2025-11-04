@@ -1,0 +1,91 @@
+package AlCuadraddo2;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.io.File;
+
+
+public class Lanzador {
+
+	/*
+	 * 
+	 * // Genera una lista de numero // Los pasa a PH-1, este hace el cuadrado de
+	 * cada numero // Los pasa a PP // PP a PH-2, le suma 10 a cada numero, los saca
+	 * por terminal
+	 * 
+	 * // ----- SI NO SALE NADA ----- // Ver que he pasado string y NO NUMEROS //
+	 * FLUSH - NEWLINE
+	 * 
+	 * 
+	 */
+	public void Lanzar() {
+
+		ArrayList<Integer> listaNumeros = new ArrayList<Integer>();
+
+		// Genero una lista de 5 numeros
+		for (int i = 0; i < 5; i++) {
+			int aleator = (int) (Math.random() * (50 - 1 + 1) + 1);
+			listaNumeros.add(aleator);
+		}
+
+		try {
+
+			// Recorro la lista ejecutando ambos procesos
+			for (Integer numero : listaNumeros) {
+
+				// Creacion de los procesos
+				ProcessBuilder pb1 = new ProcessBuilder("java", "-cp", "bin", "AlCuadraddo2.PH1");
+				pb1.redirectError(new File("err1.txt"));
+				Process proceso1 = pb1.start();
+
+				ProcessBuilder pb2 = new ProcessBuilder("java", "-cp", "bin", "AlCuadraddo2.pH2");
+				pb2.redirectError(new File("err2.txt"));
+				Process proceso2 = pb2.start();
+
+				// Envio los numeros al PH1 1 a 1
+				try (BufferedWriter bw1 = new BufferedWriter(new OutputStreamWriter(proceso1.getOutputStream()))) {
+
+					bw1.write(numero.toString()); // Parseo el numero
+					bw1.newLine();
+					bw1.flush();
+				}
+
+				// Leo la salida de PH1 y envio a PH2 la info
+				try (BufferedReader br1 = new BufferedReader(new InputStreamReader(proceso1.getInputStream()));
+						BufferedWriter bw2 = new BufferedWriter(new OutputStreamWriter(proceso2.getOutputStream()))) {
+
+					String linea = "";
+					while ((linea = br1.readLine()) != null) {
+
+						// Saco por consola y mando la info a PH2
+						System.out.println(linea);
+						bw2.write(linea.toString());
+						bw2.newLine();
+						bw2.flush();
+					}
+
+				}
+
+				// Leo la salida de PH2
+				try (BufferedReader br2 = new BufferedReader(new InputStreamReader(proceso2.getInputStream()))) {
+					String linea = "";
+					while ((linea = br2.readLine()) != null) {
+						System.out.println(linea);
+					}
+				}
+
+			}
+
+		} catch (Exception e) {
+			System.out.println("Error en el lanzador");
+		}
+	}
+
+	public static void main(String[] args) throws Exception {
+		Lanzador l = new Lanzador();
+		l.Lanzar();
+	}
+}
