@@ -60,6 +60,6 @@ Repositorio de prácticas, ejercicios y proyectos desarrollados en la asignatura
 ---
 
 ## 👨‍💻 Autor
-**Nombre del alumno**  
+**Álvaro Naranjo**  
 2º DAM – Módulo: Programación de Servicios y Procesos (PSP)  
 Año académico: **2025**
