@@ -112,3 +112,36 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.lsp4e 1 0 2025-11-04 17:27:51.148
 !MESSAGE [Info]	[certificates] Removed 7 expired certificates
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-11-04 19:11:12.566
+!MESSAGE [Info]	[default] Context provider relatedFilesShim exceeded time budget of 150ms
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-11-04 19:11:12.899
+!MESSAGE [Info]	[fetchCompletions] Request 3e99af69-46c1-409c-a6d1-ab75549384b8 at <https://proxy.individual.githubcopilot.com/v1/engines/gpt-41-copilot/completions> finished with 402 status after 317.4670000001788ms
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-04 19:11:34.580
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/HilosDia1/src/n1/hiloHola_Runnable.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-04 19:21:09.456
+!MESSAGE [Info] Document is null for editor: hiloHola_Runnable.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-04 19:21:09.456
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/HilosDia1/src/n1/hiloHola_Runnable.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-04 19:21:09.484
+!MESSAGE [Info] Document is null for editor: holaMundo_Runnable.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-04 19:21:09.485
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/HilosDia1/src/n1/holaMundo_Runnable.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-04 19:21:09.509
+!MESSAGE [Info] Document is null for editor: hiloHola_Thread.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-04 19:21:09.509
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/HilosDia1/src/n1/hiloHola_Thread.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-04 19:21:09.530
+!MESSAGE [Info] Document is null for editor: holaMundo_Thread.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-04 19:21:09.531
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/HilosDia1/src/n1/holaMundo_Thread.java
