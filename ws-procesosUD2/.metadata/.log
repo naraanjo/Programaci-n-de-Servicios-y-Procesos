@@ -145,3 +145,27 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-04 19:21:09.531
 !MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/HilosDia1/src/n1/holaMundo_Thread.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 17:55:31.288
+!MESSAGE [Info] Document is null for editor: Coche_ejem1.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 17:55:31.288
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem1/Coche_ejem1.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 17:55:31.526
+!MESSAGE [Info] Document is null for editor: Principal_ejem1.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 17:55:31.527
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem1/Principal_ejem1.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 17:55:31.739
+!MESSAGE [Info] Document is null for editor: Coche_ejem2.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 17:55:31.739
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem2/Coche_ejem2.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 17:55:31.988
+!MESSAGE [Info] Document is null for editor: Principal_ejem2.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 17:55:31.988
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem2/Principal_ejem2.java
