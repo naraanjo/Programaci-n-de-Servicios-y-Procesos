@@ -169,3 +169,69 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 17:55:31.988
 !MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem2/Principal_ejem2.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 17:58:01.714
+!MESSAGE [Info] Document is null for editor: Principal_ejem2.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 17:58:01.714
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem2/Principal_ejem2.java
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-11-11 17:59:05.486
+!MESSAGE [Info]	[default] Context provider relatedFilesShim exceeded time budget of 150ms
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-11-11 17:59:05.684
+!MESSAGE [Info]	[fetchCompletions] Request a4fd1292-05b8-4e27-83cd-eca39c68dea2 at <https://proxy.individual.githubcopilot.com/v1/engines/gpt-41-copilot/completions> finished with 402 status after 194.77969999983907ms
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 18:00:43.316
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem3_sleep/ejem3_sleep/Coche_ejem3.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 18:00:43.357
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem3_sleep/ejem3_sleep/Principal_ejem3.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 18:00:54.594
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem3_sleep/Coche_ejem3.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 18:00:54.638
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem3_sleep/Principal_ejem3.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 18:03:11.826
+!MESSAGE [Info] Document is null for editor: Coche_ejem3.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 18:03:11.826
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem3_sleep/Coche_ejem3.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 18:03:12.262
+!MESSAGE [Info] Document is null for editor: Principal_ejem3.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 18:03:12.262
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem3_sleep/Principal_ejem3.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 18:11:10.039
+!MESSAGE [Info] Document is null for editor: ej2RelanzandoHilo.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 18:11:10.039
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem4/ej2RelanzandoHilo.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 18:11:11.317
+!MESSAGE [Info] Document is null for editor: ej1Sleep.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 18:11:11.318
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem4/ej1Sleep.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 18:14:53.110
+!MESSAGE [Info] Document is null for editor: ej3RelanzandoHilo.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 18:14:53.111
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem4/ej3RelanzandoHilo.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 19:25:34.748
+!MESSAGE [Info] Document is null for editor: ej4RelanzandoHilo.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 19:25:34.749
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem4/ej4RelanzandoHilo.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 19:25:34.777
+!MESSAGE [Info] Document is null for editor: ej3RelanzandoHilo.java
+
+!ENTRY com.microsoft.copilot.eclipse 1 0 2025-11-11 19:25:34.779
+!MESSAGE [Info] Completion handler is refreshed for the document: file:///C:/Users/Alvaro/Documents/GitHub/Programaci-n-de-Servicios-y-Procesos/ws-procesosUD2/ejem4/ej3RelanzandoHilo.java
